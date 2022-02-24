@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>H2H : Register User</title>
+{% endblock title %}
+
+{% block style %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/user/signup.css' %}">
+
+{% endblock style %}
+
+{% block content %}
+
+<form action="#">
+    <h2>Sign Up</h2>
+    <hr>
+    <div class="container">
+        <label for="uname"><b>Name:</b></label>
+        <input type="text" placeholder="Enter Your name" name="uname" requires="required"><br>
+
+        <label for="email"><b>Email:</b></label>
+        <input type="email" placeholder="Enter Your email" name="email" required="required"><br>
+
+        <label for="psw"><b>Password:</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required="required"><br>
+
+        <button type="submit" onclick="document.location='guestlogin.html'">sign up</button>
+
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+        <span class="psw">Already have an account ? <a href="guestlogin.html">Login</a></span>
+    </div>
+</form>
+
+{% endblock content %}

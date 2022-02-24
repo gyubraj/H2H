@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("../../images/home_slider.jpg");
+
+  /*margin: auto;*/
+}
+
+form {
+  display: block;
+  /*margin: auto;*/
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  border: 3px solid;
+  width: calc(40% - 50px);
+  height: 350px;
+  position: centered;
+  border: 3px solid black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 70px 0px;
+  backdrop-filter: blur(8px);
+}
+form:hover {
+  transform: scale(1.05);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(50% - 40px);
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  margin: 8px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  /*float: right;*/
+  padding-top: 16px;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  margin: 8px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
