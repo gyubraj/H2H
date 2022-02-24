@@ -29,7 +29,7 @@ def send_activate_email(user) -> None:
     After user registration this function will send the activation mail to the user email.
     """
 
-    current_site = "http://127.0.0.1"
+    current_site = "http://127.0.0.1:8000"
     email_subject = "Activate your Account on H2H."
     message = render_to_string(
         "activateAccount.html",
@@ -50,7 +50,6 @@ def send_password_reset_email(user) -> None:
     """
     When user forget password this function will send mail to reset user password.
     """
-    current_site = "http://127.0.0.1"
     email_subject = "Reset your password on Securitypal."
     message = render_to_string(
         "resetPassword.html",
