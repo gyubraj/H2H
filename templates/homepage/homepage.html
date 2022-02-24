@@ -25,32 +25,7 @@
 
     <!-- Menu -->
 
-    <div class="menu">
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="menu_content">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#news">About us</a></li>
-                <li><a href="#destinations">Explore</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="">Guest Login</a></li>
-                <li><a href="">Host Login</a></li>
-
-                <li><a href="">SIGNUP as Guest</a></li>
-                <li><a href="">SIGNUP as Host</a></li>
-            </ul>
-        </div>
-        <div class="menu_social">
-            <ul class="d-flex flex-row align-items-start justify-content-start">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-    </div>
+    <!-- {% include 'components/menu.html' %} -->
 
     <!-- Home -->
 
@@ -231,88 +206,22 @@
                     <div class="destinations_container item_grid">
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_1.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_2.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_3.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_4.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_5.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="{% static 'images/destination_6.jpg' %}" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From Rs.679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                     </div>
                 </div>
@@ -337,88 +246,22 @@
                     <div class="destinations_container item_grid">
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_1.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_2.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_3.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_4.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_5.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_6.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                     </div>
                 </div>
@@ -440,88 +283,22 @@
                     <div class="destinations_container item_grid">
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_1.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_2.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_3.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_4.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_5.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                         <!-- Destination -->
-                        <div class="destination item">
-                            <div class="destination_image">
-                                <img src="images/destination_6.jpg" alt="">
-                            </div>
-                            <div class="destination_content">
-                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
-                                <div class="destination_subtitle">
-                                    <p>Nulla pretium tincidunt felis, nec.</p>
-                                </div>
-                                <div class="destination_price">From $679</div>
-                            </div>
-                        </div>
+                        {% include 'components/card.html' %}
 
                     </div>
                 </div>
