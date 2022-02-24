@@ -1,0 +1,558 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>H2H : All Travel Solutions</title>
+{% endblock title %}
+
+
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block content %}
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    {% include 'components/header.html' %}
+
+    <!-- Menu -->
+
+    <div class="menu">
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu_content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#news">About us</a></li>
+                <li><a href="#destinations">Explore</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="">Guest Login</a></li>
+                <li><a href="">Host Login</a></li>
+
+                <li><a href="">SIGNUP as Guest</a></li>
+                <li><a href="">SIGNUP as Host</a></li>
+            </ul>
+        </div>
+        <div class="menu_social">
+            <ul class="d-flex flex-row align-items-start justify-content-start">
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+
+        <!-- Home Slider -->
+        <div class="home_slider_container">
+            <div class="owl-carousel owl-theme home_slider">
+
+                <!-- Slide -->
+                <div class="owl-item">
+                    <div class="background_image" style="background: url('static/images/home_slider.jpg');"></div>
+                    <div class="home_slider_content_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_slider_content">
+                                        <div class="home_title">
+                                            <h2>Let us take you away</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide -->
+                <div class="owl-item">
+                    <div class="background_image" style="background: url('static/images/home_slider.jpg');"></div>
+                    <div class="home_slider_content_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_slider_content">
+                                        <div class="home_title">
+                                            <h2>Let us take you away</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide -->
+                <div class="owl-item">
+                    <div class="background_image" style="background: url('static/images/home_slider.jpg');"></div>
+                    <div class="home_slider_content_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_slider_content">
+                                        <div class="home_title">
+                                            <h2>Let us take you away</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Search -->
+
+    <div class="home_search">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_search_container">
+                        <div class="home_search_title">Search for your trip</div>
+                        <div class="home_search_content">
+                            <form action="#" class="home_search_form" id="home_search_form">
+                                <div
+                                    class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                    <i class="fab fa-location"></i>
+                                    <input type="text" class="search_input search_input_1" placeholder="Location"
+                                        required="required">
+
+                                    <input type="text" class="search_input search_input_2" placeholder="Arrival Date"
+                                        onfocus="(this.type='date')" onblur="(this.type='text')" required="required">
+                                    <input type="text" class="search_input search_input_3" placeholder="Departure Date"
+                                        onfocus="(this.type='date')" onblur="(this.type='text')" required="required">
+                                    <input type="number" class="search_input search_input_4" min="1"
+                                        placeholder="Travellers" required="required">
+
+                                    <select class="search_input search_input_5" required="required">
+                                        <option value="type">Type</option>
+                                        <option value="homestay">Homestay</option>
+                                        <option value="hotel">Hotel</option>
+                                        <option value="villa">Villa</option>
+                                    </select>
+
+                                    <button class="home_search_button">search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro -->
+
+    <div class="intro">
+        <div class="intro_background"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="intro_container">
+                        <div class="row">
+
+                            <!-- Intro Item -->
+                            <div class="col-lg-4 intro_col">
+                                <div class="intro_item d-flex flex-row align-items-end justify-content-start">
+                                    <div class="intro_icon"><img src="{% static 'images/beach.svg' %}" alt=""></div>
+                                    <div class="intro_content">
+                                        <div class="intro_title">Top Destinations</div>
+                                        <div class="intro_subtitle">
+                                            <p>Destinations that can beat all your past experiences.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Intro Item -->
+                            <div class="col-lg-4 intro_col">
+                                <div class="intro_item d-flex flex-row align-items-end justify-content-start">
+                                    <div class="intro_icon"><img src="{% static 'images/wallet.svg' %}" alt=""></div>
+                                    <div class="intro_content">
+                                        <div class="intro_title">The Best Prices</div>
+                                        <div class="intro_subtitle">
+                                            <p>Budget friendly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Intro Item -->
+                            <div class="col-lg-4 intro_col">
+                                <div class="intro_item d-flex flex-row align-items-end justify-content-start">
+                                    <div class="intro_icon"><img src="{% static 'images/suitcase.svg' %}" alt=""></div>
+                                    <div class="intro_content">
+                                        <div class="intro_title">Amazing Services</div>
+                                        <div class="intro_subtitle">
+                                            <p>Hospitalities that cannot be bet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Destinations -->
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">simply amazing places</div>
+                    <div class="section_title">
+                        <h2>Homestays</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_1.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_2.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_3.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_4.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_5.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="{% static 'images/destination_6.jpg' %}" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From Rs.679</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">simply amazing places</div>
+                    <div class="section_title">
+                        <h2>Hotels</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_1.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_2.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_3.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_4.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_5.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_6.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">simply amazing places</div>
+                    <div class="section_title">
+                        <h2>Villas</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_1.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_2.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Indonesia</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_3.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">San Francisco</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_4.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Paris</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_5.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="destination item">
+                            <div class="destination_image">
+                                <img src="images/destination_6.jpg" alt="">
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destinations.html">Mykonos</a></div>
+                                <div class="destination_subtitle">
+                                    <p>Nulla pretium tincidunt felis, nec.</p>
+                                </div>
+                                <div class="destination_price">From $679</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Why travel with us -->
+
+    {% include 'components/aboutus.html' %}
+
+
+<!-- Contact -->
+
+{% include 'components/contact.html' %}
+
+
+<!-- Footer -->
+
+{% include 'components/footer.html' %}
+
+
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}
