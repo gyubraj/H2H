@@ -20,13 +20,11 @@ class UserManager(BaseUserManager):
         self,
         email: str,
         name: str,
-        username: str,
         password: Optional[str] = None
     ) -> "User":
         user = self.model(
             email=self.normalize_email(email),
             name=name,
-            username=username
         )
         user.set_password(password)
         user.save()
@@ -36,13 +34,12 @@ class UserManager(BaseUserManager):
         self,
         email: str,
         name: str,
-        username: str,
         password: Optional[str] = None,
     ) -> "User":
         if password is None:
             raise TypeError("Password should not be none")
 
-        user = self.create_user(email, name, username, password)
+        user = self.create_user(email, name, password)
         user.is_superuser = True
         user.is_staff = True
         user.is_verified = True
@@ -60,7 +57,6 @@ class User(AbstractBaseUser):
     """
 
     email = models.EmailField(max_length=255, unique=True, db_index=True)
-    username = models.CharField(max_length=25,unique=True)
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -69,8 +65,8 @@ class User(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["name", "email"]
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     objects = UserManager()
 

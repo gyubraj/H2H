@@ -27,6 +27,7 @@ form:hover {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: calc(50% - 40px);
   padding: 12px 20px;
