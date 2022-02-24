@@ -86,6 +86,8 @@ DATABASES = {
 }
 
 
+AUTH_USER_MODEL = "user.User"
+
 # Email settings
 # TODO change with your own
 

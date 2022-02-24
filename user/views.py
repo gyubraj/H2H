@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.views import View
+from user.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
 
-# Create your views here.
-
+from user.utils import activate_account
 
 class RegisterView(View):
 
@@ -12,12 +15,15 @@ class RegisterView(View):
         return render(request, self.template_name)
 
     def post(self,request):
-
-        username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         name = request.POST['name']
-
+        try:
+            User.objects.create_user(email,name,password)
+        except:
+            
+            return HttpResponse("<h1>There seems to be an error</h1>")
+        return redirect('login')
 
 class LoginView(View):
 
@@ -27,14 +33,18 @@ class LoginView(View):
         return render(request, self.template_name)
 
     def post(self, request):
-        username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
 
-# class ResendVerificationLinkView(View):
+        user = authenticate(request,email=email,password=password)
 
-#     template_name = "user/resendverification.html"
+        if user is not None:
+            login(request, user)
+            return redirect('homepage')
 
-#     def get
+        return redirect('login')
+
+
 
 
 class ResetPasswordRequestView(View):
@@ -67,5 +77,11 @@ class ActivateAccount(View):
 
     def get(self,request, uid, token):
 
-        return 
+        if activate_account(uid,token):
+            return redirect('login')
+
+        return redirect('register')
+
+
+
 

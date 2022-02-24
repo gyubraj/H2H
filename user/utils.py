@@ -15,7 +15,6 @@ class TokenGenerator(PasswordResetTokenGenerator):
         return (
             text_type(user.pk)
             + text_type(timestamp)
-            + text_type(user.is_verified)
             + text_type(user.is_active)
         )
 
@@ -93,9 +92,9 @@ def activate_account(uidb64: str, token: str) -> bool:
         user = User.objects.get(pk=uid)
     except Exception:
         user = None
-
+    print(user)
     if user is not None and generate_token.check_token(user, token):
-        user.is_verified = True
+        user.is_active = True
         user.save()
         return True
 

@@ -42,7 +42,6 @@ class UserManager(BaseUserManager):
         user = self.create_user(email, name, password)
         user.is_superuser = True
         user.is_staff = True
-        user.is_verified = True
         user.is_active = True
         user.save()
         return user
@@ -61,7 +60,6 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
