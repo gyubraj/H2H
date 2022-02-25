@@ -4,8 +4,11 @@ from django.views import View
 from user.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 
-from user.utils import activate_account
+from user.utils import activate_account, send_password_reset_email
 
 class RegisterView(View):
 
@@ -58,6 +61,14 @@ class ResetPasswordRequestView(View):
         
         email = request.POST['email']
 
+        try:
+            user = User.objects.get(email__iexact = email)
+            send_password_reset_email(user)
+        except:
+            pass
+
+        return redirect('request-reset-password')
+
 
 class ResetPasswordView(View):
 
@@ -68,9 +79,26 @@ class ResetPasswordView(View):
         return render(request, self.template_name)
 
     def post(self, request, uid, token):
-        pass
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
 
+        if password1 != password2:
+            return redirect('reset-password')
+        try:
+            uid = force_str(urlsafe_base64_decode(uid))
+            user = User.objects.get(pk=uid)
+        except Exception:
+            user = None
+
+        if user is not None and PasswordResetTokenGenerator().check_token(
+            user, token
+        ):
+            user.set_password(password1)
+            user.save()
+
+            return redirect('login')
         
+        return redirect('reset-password')
 
 
 class ActivateAccount(View):
