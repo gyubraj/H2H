@@ -7,7 +7,12 @@
                         <div class="logo"><a href="index.html">H2H</a></div>
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a href="#news">Profile</a></li>
+                                    <li><a href="#news">My Listings</a></li>
+                                    <li><a href="#news">Add Property</a></li>
+                                {% else %}
                                 <li><a href="#news">About us</a></li>
                                 <li><a href="#destinations">Explore</a></li>
                                 <li><a href="#contact">Contact</a></li>
@@ -21,6 +26,7 @@
                                         </a>
                                     </li>
                                 </div>
+                                {% endif %}
                             </ul>
                         </nav>
                         <!-- <div class="dropdown">
