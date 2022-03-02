@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     # Custom defined apps
     'homepage',
     'search',
-    'user'
+    'user',
+    'property',
 ]
 
 MIDDLEWARE = [

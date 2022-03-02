@@ -5,8 +5,10 @@ from django.views import View
 
 class AddPropertyView(View):
 
+    template_name = "property/addproperty.html"
+
     def get(self, request):
-        pass
+        return render(request, self.template_name)
 
     def post(self, request):
         pass

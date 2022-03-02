@@ -11,7 +11,7 @@
                                 {% if user.is_authenticated %}
                                     <li><a href="#news">Profile</a></li>
                                     <li><a href="#news">My Listings</a></li>
-                                    <li><a href="#news">Add Property</a></li>
+                                    <li><a href="{% url 'add-property' %}">Add Property</a></li>
                                 {% else %}
                                 <li><a href="#news">About us</a></li>
                                 <li><a href="#destinations">Explore</a></li>
