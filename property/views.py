@@ -11,7 +11,7 @@ class AddPropertyView(View):
         return render(request, self.template_name)
 
     def post(self, request):
-        pass
+        return render(request,"property/success.html")
 
 
 class DeletePropertyView(View):
