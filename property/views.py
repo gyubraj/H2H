@@ -19,3 +19,10 @@ class DeletePropertyView(View):
     def get(self, request, pk):
         pass
 
+
+
+class MyProperty(View):
+
+    def get(self, request):
+
+        return render(request, "mylistings/myproperty.html")
