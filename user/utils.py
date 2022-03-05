@@ -49,7 +49,7 @@ def send_password_reset_email(user) -> None:
     """
     When user forget password this function will send mail to reset user password.
     """
-    email_subject = "Reset your password on Securitypal."
+    email_subject = "Reset your password on H2H."
     message = render_to_string(
         "resetPassword.html",
         {

@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views import View
 from user.models import User
 from django.contrib.auth.decorators import login_required
@@ -67,7 +68,7 @@ class ResetPasswordRequestView(View):
         except:
             pass
 
-        return redirect('request-reset-password')
+        return redirect('login')
 
 
 class ResetPasswordView(View):
@@ -83,7 +84,8 @@ class ResetPasswordView(View):
         password2 = request.POST['password2']
 
         if password1 != password2:
-            return redirect('reset-password')
+            return redirect(reverse('reset-password', args=(uid,token)))
+            return redirect(f'reset-password/')
         try:
             uid = force_str(urlsafe_base64_decode(uid))
             user = User.objects.get(pk=uid)
