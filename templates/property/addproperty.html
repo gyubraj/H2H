@@ -28,10 +28,10 @@
 {% block content %}
 
 <nav class="navbar sticky-top">
-    <a class="navbar-brand" href="host.html" style="left: 20px;  padding-left: 20px;"><b><b>H2H</b></b></a>
+    <a class="navbar-brand" href="{% url 'homepage' %}" style="left: 20px;  padding-left: 20px;"><b><b>H2H</b></b></a>
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link" href="host.html" style="color: Black;, text-decoration-style: double;"><b>Home</b></a>
+            <a class="nav-link" href="{% url 'homepage' %}" style="color: Black;, text-decoration-style: double;"><b>Home</b></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" style="color: black;, text-decoration-style:double;"><b>My Listings</b></a>
@@ -83,7 +83,7 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div> <br> <!-- fieldsets -->
-                <form id="msform" method="POST" action="">
+                <form id="msform" method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     <fieldset>
                         <div class="form-card">
@@ -96,73 +96,73 @@
                                 </div>
                             </div>
                             <label class="fieldlabels"><b>Space Type:*</b></label>
-                            <select>
+                            <select name="type">
                                 Space Type:
-                                <option value="homestay">Homestay</option>
-                                <option value="hotel">Hotel</option>
-                                <option value="villa">Villa</option>
+                                <option value="Homestay">Homestay</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Villa">Villa</option>
                             </select>
 
                             <label class="fieldlabels"><b>Title for your Space:*</b></label>
-                            <input type="text" name="hname" placeholder="Enter catchy title for your space" />
+                            <input type="text" name="name" placeholder="Enter catchy title for your space" />
 
                             <label class="fieldlabels"><b>Facilities:*</b></label><br>
                             <table style="width:100%">
                                 <tr>
                                     <td><label class="fieldlabels">Complementary Breakfast</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="breakfast">
                                         <span class="checkmark"></span>
                                     </td>
 
                                     <td><label class="fieldlabels">Luxrious room</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="luxrious_room">
                                         <span class="checkmark"></span>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label class="fieldlabels">Attached toilet/bathroom</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="bathroom">
                                         <span class="checkmark"></span>
                                     </td>
 
                                     <td><label class="fieldlabels">HOT SHOWER</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="shower">
                                         <span class="checkmark"></span>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label class="fieldlabels">TV </label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="tv">
                                         <span class="checkmark"></span>
                                     </td>
 
                                     <td><label class="fieldlabels">AC</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="ac">
                                         <span class="checkmark"></span>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label class="fieldlabels">INTERNET</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="internet">
                                         <span class="checkmark"></span>
                                     </td>
                                     <td><label class="fieldlabels">SMOKING & DRINKING</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="smoking">
                                         <span class="checkmark"></span>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label class="fieldlabels">RECEIVE FACILITY</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="receive_facility">
                                         <span class="checkmark"></span>
                                     </td>
 
                                     <td><label class="fieldlabels">DROP FACILITY</label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="drop_facility">
                                         <span class="checkmark"></span>
                                     </td>
                                 </tr>
@@ -186,9 +186,9 @@
                             <label class="fieldlabels">City/Place*</label>
                             <input type="text" name="city" placeholder="City/Place" />
                             <label class="fieldlabels">Address*</label>
-                            <input type="text" name="city" placeholder="In detail address" />
+                            <input type="text" name="address" placeholder="In detail address" />
                             <label class="fieldlabels">Nearest Landmark*</label>
-                            <input type="text" name="city" placeholder="Nearest Landmark" />
+                            <input type="text" name="landmark" placeholder="Nearest Landmark" />
 
                             <!-- <label class="fieldlabels">Location*</label>
                             <input type="submit" name="get_location" class="button" id="get_location"
@@ -213,13 +213,13 @@
                                 </div>
                             </div>
                             <label class="fieldlabels">No. of Rooms: *</label>
-                            <input type="number" name="num" placeholder="Total Rooms" />
+                            <input type="number" name="no_of_rooms" placeholder="Total Rooms" />
                             <label class="fieldlabels">Maximum People per Room: *</label>
-                            <input type="number" name="mnum" placeholder="Maximum Capacity" />
+                            <input type="number" name="max_people_per_room" placeholder="Maximum Capacity" />
                             <label class="fieldlabels">Start price per Room per person: *</label>
-                            <input type="number" name="pnum" placeholder="Price" />
+                            <input type="number" name="price_per_room" placeholder="Price" />
                             <label class="fieldlabels">Increase price per person: *</label>
-                            <input type="number" name="pnum" placeholder="Price" />
+                            <input type="number" name="increase_price_per_person" placeholder="Price" />
 
 
                             <!-- <label class="fieldlabels">Available Rooms *</label>
@@ -241,9 +241,9 @@
                             </div> <br><br>
                             <!-- <label class="fieldlabels">Images of your space*</label> -->
                             <label class="fieldlabels">Main Image*:</label><br>
-                            <input type="file" name="room_photo" accept="image/*"> <br>
+                            <input type="file" name="room_image" accept="image/*"> <br>
                             <label class="fieldlabels">Other Images:</label><br>
-                            <input type="file" name="pic" accept="image/*" multiple> <br>
+                            <input type="file" name="other_images" accept="image/*" multiple> <br>
                             <!-- <label class="fieldlabels">Bathroom*:</label><br>
                             <input type="file" name="pic" accept="image/*"> <br>
                             <label class="fieldlabels">Dinning*:</label><br>
