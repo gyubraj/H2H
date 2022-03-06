@@ -85,7 +85,7 @@ class ResetPasswordView(View):
 
         if password1 != password2:
             return redirect(reverse('reset-password', args=(uid,token)))
-            return redirect(f'reset-password/')
+
         try:
             uid = force_str(urlsafe_base64_decode(uid))
             user = User.objects.get(pk=uid)
@@ -100,7 +100,7 @@ class ResetPasswordView(View):
 
             return redirect('login')
         
-        return redirect('reset-password')
+        return redirect(reverse('reset-password', args=(uid,token)))
 
 
 class ActivateAccount(View):

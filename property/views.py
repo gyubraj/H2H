@@ -45,7 +45,7 @@ class AddPropertyView(View):
 
 class DeletePropertyView(View):
 
-    def get(self, request, pk):
+    def get(self, request, slug):
         pass
 
 
@@ -54,4 +54,25 @@ class MyProperty(View):
 
     def get(self, request):
 
-        return render(request, "mylistings/myproperty.html")
+        property = Property.objects.filter(owner=request.user)
+
+        context ={
+            'property':property
+        }
+
+        return render(request, "mylistings/myproperty.html",context=context)
+
+
+class PropertyDetailView(View):
+
+    def get(self,request,slug):
+        try:
+            property = Property.objects.get(slug=slug)
+            context={
+                'property':property
+            }
+
+            return render(request,'property/property_detail.html',context)
+
+        except:
+            pass

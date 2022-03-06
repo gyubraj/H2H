@@ -42,9 +42,13 @@ class Property(models.Model):
 
     created_date = models.DateField(auto_now_add=True)
 
+    @property
+    def all_images(self):
+        return self.images.all()
+
 
 class PropertyImages(models.Model):
-    property = models.ForeignKey(Property,on_delete=models.CASCADE)
+    property = models.ForeignKey(Property,on_delete=models.CASCADE,related_name="images")
     image = models.ImageField(upload_to = 'property/other_images')
 
 
