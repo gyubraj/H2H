@@ -1,0 +1,99 @@
+
+
+
+
+
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>H2H : Add Property</title>
+
+{% endblock title %}
+
+
+{% block style %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/mylistings/mylisting.css' %}">
+
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="container py-3">
+    <div class="title h1 text-center">Horizontal cards - Bootstrap 4</div>
+
+
+    
+    {% if property %}
+
+    {% for p in property %}
+    <div class="card">
+        <div class="row ">
+
+            <div class="col-md-7 px-3">
+                <div class="card-block px-6">
+                    <h2 class="card-title">{{ p.name }} </h2>
+                    <p><b>Type : {{p.type}}</b></p>
+                    <p class="card-text">
+                        The Carousel code can be replaced with an img src, no problem. The added CSS brings shadow to
+                        the card and some adjustments to the prev/next buttons and the indicators is rounded now. As in
+                        Bootstrap 3
+                    </p>
+                    <p class="card-text">Made for usage, commonly searched for. Fork, like and use it. Just move the
+                        carousel div above the col containing the text for left alignment of images</p>
+                    <br>
+                    <a href="{% url 'property-detail' p.slug %}" class="mt-auto btn btn-primary">Detail</a>
+                </div>
+            </div>
+            <!-- Carousel start -->
+            <div class="col-md-5">
+                <div id="CarouselTest" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#CarouselTest" data-slide-to="0" class="active"></li>
+                        <li data-target="#CarouselTest" data-slide-to="1"></li>
+                        <li data-target="#CarouselTest" data-slide-to="2"></li>
+
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block" src="{{p.main_image.url}}" height="325" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block" src="{% static 'images/destination_2.jpg' %}" height="325" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block" src="{% static 'images/destination_3.jpg' %}" height="325" alt="">
+                        </div>
+                        <a class="carousel-control-prev" href="#CarouselTest" role="button" data-slide="prev">
+                            <span class="cHomeStayarousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#CarouselTest" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End of carousel -->
+        </div>
+    </div>
+
+    {% endfor %}
+    <!-- End of card -->
+
+    {% else %}
+    <h1> You have not added any property yet.</h1>
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}

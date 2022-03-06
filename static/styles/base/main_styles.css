@@ -847,8 +847,8 @@ label {
 .destinations {
   width: 100%;
   background: #ffffff;
-  padding-top: 115px;
-  padding-bottom: 116px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .section_subtitle {
   font-family: "Oswald", sans-serif;
@@ -1106,20 +1106,6 @@ label {
   height: 100%;
   z-index: 1;
 }
-/*.travello_content_inner > div:first-child
-{
-	left: 0;
-	background: rgba(45,143,197,0.7);
-	transform-origin: top left;
-	transform: rotate(12deg);
-}
-.travello_content_inner > div:last-child
-{
-	right: 0;
-	background: rgba(237,35,69,0.7);
-	transform-origin: top right;
-	transform: rotate(-12deg);
-}*/
 .travello_container {
   position: absolute;
   top: 0;

@@ -191,6 +191,37 @@
         </div>
     </div>
 
+    {% if request.user.is_authenticated and recommended %}
+    <!-- Recomendations -->
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">Based on last place view</div>
+                    <div class="section_title">
+                        <h2>Recommended For You</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
+    
+                        {% for p in recommended %}
+    
+                        {% include 'components/card.html' %}
+    
+                        {% endfor %}
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
 
     <!-- Destinations -->
     <div class="destinations" id="destinations">
@@ -207,23 +238,12 @@
                 <div class="col">
                     <div class="destinations_container item_grid">
 
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
+                        {% for p in homestay %}
+                        
+                            {% include 'components/card.html' %}
 
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
+                        {% endfor %}
 
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
 
                     </div>
                 </div>
@@ -247,23 +267,11 @@
                 <div class="col">
                     <div class="destinations_container item_grid">
 
-                        <!-- Destination -->
+                        {% for p in hotel %}
+                        
                         {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
+                        
+                        {% endfor %}
 
                     </div>
                 </div>
@@ -284,23 +292,11 @@
                 <div class="col">
                     <div class="destinations_container item_grid">
 
-                        <!-- Destination -->
+                        {% for p in villa %}
+                        
                         {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
-
-                        <!-- Destination -->
-                        {% include 'components/card.html' %}
+                        
+                        {% endfor %}
 
                     </div>
                 </div>

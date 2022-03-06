@@ -2,13 +2,13 @@
 
 <div class="destination item">
     <div class="destination_image">
-        <img src="{% static 'images/destination_1.jpg' %}" alt="">
+        <img src="{{p.main_image.url}}" alt="">
     </div>
     <div class="destination_content">
-        <div class="destination_title"><a href="destinations.html">Ghandruk Homestay</a></div>
+        <div class="destination_title"><a href="{% url 'property-detail' p.slug %}">{{p.name}}</a></div>
         <div class="destination_subtitle">
-            <p>Nulla pretium tincidunt felis, nec.</p>
+            <p>{{p.address}}.<br><b>Type : {{p.type}}</b></p>
         </div>
-        <div class="destination_price">From $679</div>
+        <div class="destination_price">From Rs. {{p.price_per_room}}</div>
     </div>
 </div>

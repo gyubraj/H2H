@@ -57,6 +57,7 @@ class User(AbstractBaseUser):
 
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     name = models.CharField(max_length=100)
+    recommendFor=models.CharField(max_length=1000,blank=True,null=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

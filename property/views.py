@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from property.models import Property, PropertyImages
+from user.models import User
 
 # Create your views here.
 
@@ -68,6 +69,9 @@ class PropertyDetailView(View):
     def get(self,request,slug):
         try:
             property = Property.objects.get(slug=slug)
+            if request.user.is_authenticated:
+                request.user.recommendFor = property.name
+                request.user.save()
             context={
                 'property':property
             }
