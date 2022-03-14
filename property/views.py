@@ -5,6 +5,19 @@ from user.models import User
 
 
 # Create your views here.
+class PropertyDetailView(View):
+
+    def get(self,request,slug):
+        property = get_object_or_404(Property,slug=slug)
+        if request.user.is_authenticated:
+            request.user.recommendFor = property.name
+            request.user.save()
+        context={
+            'property':property
+        }
+
+        return render(request,'property/property_detail.html',context)
+
 
 class AddPropertyView(View):
 
@@ -49,7 +62,7 @@ class EditProperty(View):
     template_name = "property/editproperty.html"
 
     def get(self,request, slug):
-        property = get_object_or_404(Property, slug=slug)
+        property = get_object_or_404(Property, slug=slug, user= request.user)
         images = PropertyImages.objects.filter(property = property)
         context = {
             'property': property,
@@ -59,12 +72,45 @@ class EditProperty(View):
 
     def post(self, request, slug):
 
+        property = get_object_or_404(Property, slug=slug, user= request.user)
+
+        property.name = request.POST['name']
+        property.type = request.POST['type']
+        property.total_rooms = request.POST['no_of_rooms']
+        property.price_per_room = request.POST['price_per_room']
+        property.person_per_room = request.POST['max_people_per_room']
+        property.increase_price_per_person = request.POST['increase_price_per_person']
+        property.complementary_breakfast = request.POST.get('breakfast','') == "on"
+        property.luxirous_room = request.POST.get('luxrious_room','') == "on"
+        property.attached_bathroom = request.POST.get('bathroom','') == "on"
+        property.hot_shower = request.POST.get('shower','') == "on"
+        property.tv = request.POST.get('tv','') == "on"
+        property.ac = request.POST.get('ac','') == "on"
+        property.internet = request.POST.get('internet','') == "on"
+        property.smoking_drinking = request.POST.get('smoking','') == "on"
+        property.receive_facility = request.POST.get('receive_facility','') == "on"
+        property.drop_facility = request.POST.get('drop_facility','') == "on"
+        property.city = request.POST['city']
+        property.address = request.POST['address']
+        property.nearest_landmark = request.POST['landmark']
+        property.rules = request.POST['rules']
+        property.main_image = request.FILES['room_image']
+
+        property.save()
+
+        return render(request,"property/editsuccess.html")
+
 
 
 class DeletePropertyView(View):
 
     def get(self, request, slug):
-        pass
+        property = get_object_or_404(Property, slug= slug, user= request.user)
+
+        property.delete()
+
+        return render(request,"property/deletesuccess.html")
+
 
 
 
@@ -80,20 +126,3 @@ class MyProperty(View):
 
         return render(request, "mylistings/myproperty.html",context=context)
 
-
-class PropertyDetailView(View):
-
-    def get(self,request,slug):
-        try:
-            property = Property.objects.get(slug=slug)
-            if request.user.is_authenticated:
-                request.user.recommendFor = property.name
-                request.user.save()
-            context={
-                'property':property
-            }
-
-            return render(request,'property/property_detail.html',context)
-
-        except:
-            pass
