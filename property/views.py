@@ -112,6 +112,16 @@ class DeletePropertyView(View):
         return render(request,"property/deletesuccess.html")
 
 
+# TODO
+class ChangePropertyAvailable(View):
+
+    def get(self, request, slug):
+
+        property = get_object_or_404(Property, user = request.user, slug= slug)
+
+        property.available = request.POST['available']
+        
+
 
 
 class MyProperty(View):
