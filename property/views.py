@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from property.models import Property, PropertyImages
 from user.models import User
+
 
 # Create your views here.
 
@@ -42,6 +43,22 @@ class AddPropertyView(View):
         for img in other_images:
             PropertyImages.objects.create(property=property,image=img)
         return render(request,"property/success.html")
+
+
+class EditProperty(View):
+    template_name = "property/editproperty.html"
+
+    def get(self,request, slug):
+        property = get_object_or_404(Property, slug=slug)
+        images = PropertyImages.objects.filter(property = property)
+        context = {
+            'property': property,
+            'propertyimages': images
+        }
+        return render(request, self.template_name,context= context)
+
+    def post(self, request, slug):
+
 
 
 class DeletePropertyView(View):
