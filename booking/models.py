@@ -16,7 +16,7 @@ class Booking(models.Model):
     rooms = models.IntegerField()
     from_date = models.DateField()
     to_date = models.DateField()
-    price = models.FloatField(null= True,blincrease_ank=True)
+    price = models.FloatField(null= True,blank=True)
 
     order_date = models.DateTimeField(auto_now=True)
 

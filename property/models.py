@@ -52,8 +52,12 @@ class Property(models.Model):
     def all_orders(self):
         return self.booking.all()
 
+    @property
+    def get_booked_booking(self):
+        return self.user_booking.all()
+
     @staticmethod
-    def get_search_data(type, location):
+    def get_search_data(type, location, no_of_people):
 
         # data = 
 
@@ -61,7 +65,7 @@ class Property(models.Model):
         # if already_order_room>0 and (total_rooms-already_order_room)< order_rooms:
         #     return "Not Available"
 
-        return Property.objects.filter(Q(city__icontains = location) | Q(location__icontains=location), available= True, type__iexact= type )
+        return Property.objects.filter(Q(city__icontains = location) | Q(address__icontains=location), available= True, type__iexact= type)
 
 
 

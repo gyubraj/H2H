@@ -4,7 +4,7 @@ from django.dispatch import receiver
 
 # Create your models here.
 
-class Contact(models.model):
+class Contact(models.Model):
 
     email = models.EmailField(max_length=255)
     name = models.CharField(max_length=100)
@@ -13,8 +13,8 @@ class Contact(models.model):
 
 
 
-@receiver(post_save, sender=Contact)
-def send_activation_email(sender, instance, created, **kwargs):
+# @receiver(post_save, sender=Contact)
+# def send_activation_email(sender, instance, created, **kwargs):
 
-    if created:
-        send_contact_email(instance)
+#     if created:
+#         send_contact_email(instance)
