@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Q
+
 import string, random
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -15,7 +17,7 @@ property_type = (
 
 class Property(models.Model):
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="property_owner")
     type = models.CharField(max_length=40, choices=property_type)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length = 250, null = True, blank = True)
@@ -45,6 +47,24 @@ class Property(models.Model):
     @property
     def all_images(self):
         return self.images.all()
+
+    @property
+    def all_orders(self):
+        return self.booking.all()
+
+    @staticmethod
+    def get_search_data(type, location):
+
+        # data = 
+
+        # already_order_room = self.property.all_orders.filter(from_date__gte=self.from_date,to_date__lte=self.to_date).aggregate(od_room=Sum('order_rooms'))['od_room']
+        # if already_order_room>0 and (total_rooms-already_order_room)< order_rooms:
+        #     return "Not Available"
+
+        return Property.objects.filter(Q(city__icontains = location) | Q(location__icontains=location), available= True, type__iexact= type )
+
+
+
 
 
 class PropertyImages(models.Model):

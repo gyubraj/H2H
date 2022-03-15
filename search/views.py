@@ -17,10 +17,13 @@ class SearchView(View):
         end_date = request.POST['end_date']
         type = request.POST['type']
 
-        property = Property.objects.filter(available= True, type__iexact = type, location__icontains = location)
+        property = Property.get_search_data(type=type, location=location)
 
         context = {
-            'property': property
+            'property': property,
+            'location':location,
+            'start_date':start_date,
+            'end_date': end_date
         }
 
         return render(request, 'search/search.html', context=context)

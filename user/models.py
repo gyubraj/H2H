@@ -82,6 +82,10 @@ class User(AbstractBaseUser):
     ) -> bool:
         return self.is_superuser
 
+    @property
+    def get_property(self):
+        return self.property_owner.all()
+
 
 @receiver(post_save, sender=User)
 def send_activation_email(sender, instance, created, **kwargs):
