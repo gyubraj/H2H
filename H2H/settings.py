@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'search',
     'user',
     'property',
+    'booking',
+    'contact',
 ]
 
 MIDDLEWARE = [

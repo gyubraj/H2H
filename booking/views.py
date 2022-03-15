@@ -1,10 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 
 from django.views import View
 from booking.models import Booking
 
 from property.models import Property
 # Create your views here.
+
+
+class BookedBookingView(View):
+
+    def get(self,request):
+
+        booked = request.user.get_booked_booking
 
 
 class BookingView(View):
@@ -19,11 +26,11 @@ class BookingView(View):
         return render(request, 'booking/bookingview.html', context=context)
 
 
-
-
-
-
 class AddBookingView(View):
+
+    def get(self, request, slug):
+
+        return
 
     def post(self, request, slug):
 
@@ -45,7 +52,12 @@ class AddBookingView(View):
 
         booking = Booking.objects.create(**data)
 
+        return redirect('homepage')
+
 class EditBookingView(View):
+    def get(self, request,id):
+
+        return 
 
     def post(self, request, id):
 
@@ -58,6 +70,8 @@ class EditBookingView(View):
 
         booking.save()
 
+        return redirect('homepage')
+
         
 class DeleteBookingView(View):
 
@@ -65,6 +79,8 @@ class DeleteBookingView(View):
 
         booking = get_object_or_404(Booking, pk=id, visitor=request.user)
         booking.delete()
+
+        return redirect('homepage')
         
 
 
