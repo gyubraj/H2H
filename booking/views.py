@@ -17,7 +17,8 @@ class BookingView(View):
         }
 
         return render(request, 'booking/bookingview.html', context=context)
-        
+
+
 
 
 
@@ -48,7 +49,7 @@ class EditBookingView(View):
 
     def post(self, request, id):
 
-        booking = get_object_or_404(Booking, pk=id)
+        booking = get_object_or_404(Booking, pk=id, visitor=request.user)
 
         booking.from_date = request.POST['from_date']
         booking.to_date = request.POST['to_date']
@@ -57,6 +58,13 @@ class EditBookingView(View):
 
         booking.save()
 
+        
+class DeleteBookingView(View):
+
+    def get(self, request, id):
+
+        booking = get_object_or_404(Booking, pk=id, visitor=request.user)
+        booking.delete()
         
 
 
