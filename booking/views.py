@@ -14,7 +14,7 @@ class BookedBookingView(View):
         booked = request.user.get_booked_booking
 
 
-class BookingView(View):
+class ReceivedBookingView(View):
 
     def get(self, request):
         property = self.user.get_property

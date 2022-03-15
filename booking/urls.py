@@ -1,9 +1,10 @@
 from unicodedata import name
 from django.urls import path
-from booking.views import BookingView, AddBookingView, EditBookingView, DeleteBookingView
+from booking.views import ReceivedBookingView, BookedBookingView, AddBookingView, EditBookingView, DeleteBookingView
 
 urlpatterns = [
-    path('',BookingView.as_view(), name="booking"),
+    path('received-booking',ReceivedBookingView.as_view(), name="received-booking"),
+    path('my-booking',BookedBookingView.as_view(),name="booked-booking"),
     path('add-booking',AddBookingView.as_view(), name= "add-booking"),
     path('edit-booking/<int:id>',EditBookingView.as_view(), name= "edit-booking"),
     path('delete-booking', DeleteBookingView.as_view(), name= "delete-booking")
