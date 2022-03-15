@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>H2H : Search</title>
+{% endblock title %}
+
+
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base/responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base/main_styles.css' %}">
+
+<style>
+    .header_content {
+        height: 100px;
+    }
+
+    .header {
+        background: rgba(24, 24, 24, 0.6);
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    {% include 'components/header.html' %}
+
+    <!-- Menu -->
+
+    <!-- {% include 'components/menu.html' %} -->
+
+    <!-- Home -->
+
+    <!-- Intro -->
+
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">Listed Properties</div>
+                    <div class="section_title">
+                        <h2>Search Result is </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row destinations_row">
+                <div class="col">
+                    <div class="destinations_container item_grid">
+
+                        {% for p in property %}
+
+                        {% include 'components/card.html' %}
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}

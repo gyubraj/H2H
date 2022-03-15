@@ -104,22 +104,24 @@
                     <div class="home_search_container">
                         <div class="home_search_title">Search for your trip</div>
                         <div class="home_search_content">
-                            <form action="#" class="home_search_form" id="home_search_form">
+                            <form method="POST" action="{% url 'search' %}" class="home_search_form" id="home_search_form">
+
+                                {% csrf_token %}
+
                                 <div
                                     class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                     <i class="fab fa-location"></i>
-                                    <input type="text" class="search_input search_input_1" placeholder="Location"
+                                    <input type="text" class="search_input search_input_1" placeholder="Location" name="location"
                                         required="required">
 
-                                    <input type="text" class="search_input search_input_2" placeholder="Arrival Date"
+                                    <input type="text" class="search_input search_input_2" placeholder="Arrival Date" name="start_date"
                                         onfocus="(this.type='date')" onblur="(this.type='text')" required="required">
-                                    <input type="text" class="search_input search_input_3" placeholder="Departure Date"
+                                    <input type="text" class="search_input search_input_3" placeholder="Departure Date" name="end_date"
                                         onfocus="(this.type='date')" onblur="(this.type='text')" required="required">
-                                    <input type="number" class="search_input search_input_4" min="1"
+                                    <input type="number" class="search_input search_input_4" min="1" name="no_of_people"
                                         placeholder="Travellers" required="required">
 
-                                    <select class="search_input search_input_5" required="required">
-                                        <option value="type">Type</option>
+                                    <select class="search_input search_input_5" required="required" name="type">
                                         <option value="homestay">Homestay</option>
                                         <option value="hotel">Hotel</option>
                                         <option value="villa">Villa</option>
