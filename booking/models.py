@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.db.models import Q
 from django.db.models import Sum
@@ -22,7 +23,6 @@ class Booking(models.Model):
 
     def save(self, *args, **kwargs) -> None:
 
-        print("Hello World")
         total_rooms = self.property.total_rooms
         property_per_room_person = self.property.person_per_room
         price_per_room = self.property.price_per_room
@@ -30,6 +30,12 @@ class Booking(models.Model):
         order_rooms= self.rooms
         order_no_of_people = self.no_people
 
+        if self.from_date > self.to_date:
+            return "error"
+        elif self.from_date == self.to_date:
+            number_of_days = 1
+        else:
+            number_of_days = (self.to_date - self.from_date).days
 
         if order_no_of_people > ( order_rooms * property_per_room_person):
             return "Not Valid Data"
@@ -39,7 +45,7 @@ class Booking(models.Model):
         if already_order_room and  already_order_room>0 and (total_rooms-already_order_room)< order_rooms:
             return "Not Available"
         
-        self.price = (order_rooms*price_per_room)+(order_no_of_people-order_rooms)*increase_price_per_person
+        self.price = ((order_rooms*price_per_room)+(order_no_of_people-order_rooms)*increase_price_per_person) * number_of_days
         
         super(Booking,self).save(*args,**kwargs)
 
