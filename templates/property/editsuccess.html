@@ -23,6 +23,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<style>
+    .nav-link{
+        color: black;
+        text-decoration-style: double;
+    }
+</style>
+
 {% endblock style %}
 
 {% block content %}
@@ -31,13 +38,13 @@
     <a class="navbar-brand" href="host.html" style="left: 20px;  padding-left: 20px;"><b><b>H2H</b></b></a>
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link" href="host.html" style="color: Black;, text-decoration-style: double;"><b>Home</b></a>
+            <a class="nav-link" href="host.html" ><b>Home</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: black;, text-decoration-style:double;"><b>My Listings</b></a>
+            <a class="nav-link" href="#" ><b>My Listings</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: black;, text-decoration-style:double;"><b>Profile</b></a>
+            <a class="nav-link" href="#"><b>Profile</b></a>
         </li>
     </ul>
 </nav>
@@ -46,20 +53,19 @@
     <div class="row justify-content-center">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <fieldset>
-                        
-                            <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                            <div class="row justify-content-center">
-                                <div class="col-3"> <img src="{% static 'images/check-mark.png' %}" class="fit-image"> </div>
-                            </div> <br><br>
-                            <div class="row justify-content-center">
-                                <div class="col-7 text-center">
-                                    <h5 class="purple-text text-center">You Have Successfully Edited your space</h5>
-                                </div>
+                <fieldset>
+                    <div>
+                        <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                        <div class="row justify-content-center">
+                            <div class="col-3"> <img src="{% static 'images/check-mark.png' %}" class="fit-image"> </div>
+                        </div> <br><br>
+                        <div class="row justify-content-center">
+                            <div class="col-7 text-center">
+                                <h5 class="purple-text text-center">You Have Successfully Edited your space.</h5>
                             </div>
                         </div>
-                    </fieldset>
-
+                    </div>
+                </fieldset>
             </div>
         </div>
     </div>
