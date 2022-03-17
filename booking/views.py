@@ -38,7 +38,7 @@ class AddBookingView(View):
 
     def get(self, request, slug):
 
-        return
+        return redirect('homepage')
 
     def post(self, request, slug):
 
@@ -52,6 +52,9 @@ class AddBookingView(View):
         to_date = parser.parse(request.POST['to_date'])
         no_of_people = int(request.POST['no_of_people'])
         no_of_rooms = int(request.POST['no_of_rooms'])
+
+        if Booking.objects.filter(from_date__gte=from_date, to_date__lte = to_date, property=property, visitor= request.user).exists():
+            return HttpResponse("You Already have booked this property.")
 
         data= {
             'property': property,
@@ -69,7 +72,7 @@ class AddBookingView(View):
 class EditBookingView(View):
     def get(self, request,id):
 
-        return 
+        return redirect('homepage')
 
     def post(self, request, id):
 

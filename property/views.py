@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 from property.models import Property, PropertyImages
 from user.models import User
@@ -105,9 +105,11 @@ class EditProperty(View):
 class DeletePropertyView(View):
 
     def get(self, request, slug):
-        property = get_object_or_404(Property, slug= slug, user= request.user)
+        property = get_object_or_404(Property, slug= slug, owner= request.user)
 
         property.delete()
+
+        return redirect('my-property')
 
         return render(request,"property/deletesuccess.html")
 
@@ -117,7 +119,7 @@ class ChangePropertyAvailable(View):
 
     def get(self, request, slug):
 
-        property = get_object_or_404(Property, user = request.user, slug= slug)
+        property = get_object_or_404(Property, owner = request.user, slug= slug)
 
         property.available = request.POST['available']
         

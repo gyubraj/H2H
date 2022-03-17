@@ -113,5 +113,11 @@ class ActivateAccount(View):
         return redirect('register')
 
 
+class LogoutUser(View):
 
+    def get(self, request):
+
+        logout(request)
+
+        return redirect('login')
 
