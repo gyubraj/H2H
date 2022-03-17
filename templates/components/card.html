@@ -9,6 +9,14 @@
         <div class="destination_subtitle">
             <p>{{p.address}}.<br><b>Type : {{p.type}}</b></p>
         </div>
-        <div class="destination_price">From Rs. {{p.price_per_room}}</div>
+        <div>
+
+            <span class="destination_price">From Rs. {{p.price_per_room}}</span>
+            {% if p.owner == request.user %}
+            <span style="float: right; margin-right: 10px;">Delete</span>
+            <span style="float: right; margin-right: 10px; "><a href="{% url 'edit-property' p.slug %}">Edit</a></span>
+            {% endif %}
+
+        </div>
     </div>
 </div>

@@ -17,8 +17,8 @@
                                             <a style="color: white;">Booking
                                                 <button class="dropbtn"></button>
                                                 <div class="dropdown-content">
-                                                    <a href="guest/guestlogin.html" class="login-content"> Received </a> <br>
-                                                    <a href="host/hostlogin.html" class="login-content"> Booked </a>
+                                                    <a href="{% url 'received-booking' %}" class="login-content"> Received </a> <br>
+                                                    <a href="{% url 'booked-booking' %}" class="login-content"> Booked </a>
                                                 </div>
                                             </a>
                                         </li>
@@ -27,6 +27,11 @@
                                 <li><a href="#news">About us</a></li>
                                 <li><a href="#destinations">Explore</a></li>
                                 <li><a href="#contact">Contact</a></li>
+                                <div class="dropdown">
+                                    <li><a href="{% url 'login' %}">Login
+                                        </a>
+                                    </li>
+                                </div>
                                 <div class="dropdown">
                                     <li><a href="{% url 'register' %}">SIGNUP
                                         </a>

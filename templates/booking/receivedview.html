@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>H2H : All Travel Solutions</title>
+{% endblock title %}
+
+
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base/responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base/main_styles.css' %}">
+
+<style>
+    .header_content {
+        height: 100px;
+    }
+
+    .header {
+        background: rgba(24, 24, 24, 0.6);
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    {% include 'components/header.html' %}
+
+    <!-- Menu -->
+
+    <!-- {% include 'components/menu.html' %} -->
+
+    <!-- Home -->
+
+    <!-- Intro -->
+
+    <div class="destinations" id="destinations" style="margin-top: 100px;">
+
+        {% for p in property %}
+
+        {% if p.all_orders %}
+        
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <div class="section_title">
+                        <h2>Booking For {{p.name}}</h2>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Visitor Name</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">No Of People</th>
+                        <th scope="col">No of Rooms</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in p.all_orders %}
+                            <tr>
+                                <th scope="row">{{b.visitor.name}}</th>
+                                <td>{{b.from_date}}</td>
+                                <td>{{b.to_date}}</td>
+                                <td>{{b.no_people}}</td>
+                                <td>{{b.rooms}}</td>
+                                <td>{{b.price}}</td>
+                            </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}
