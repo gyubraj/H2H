@@ -1,9 +1,12 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 
 from django.views import View
 from booking.models import Booking
 
 from property.models import Property
+
+from dateutil import parser
 # Create your views here.
 
 
@@ -11,19 +14,24 @@ class BookedBookingView(View):
 
     def get(self,request):
 
-        booked = request.user.get_booked_booking
+        bookedproperty = request.user.get_booked_booking
+        context = {
+            'property' : bookedproperty
+        }
+
+        return render(request, "booking/bookedview.html", context=context)
 
 
 class ReceivedBookingView(View):
 
     def get(self, request):
-        property = self.user.get_property
+        property = request.user.get_property
 
         context = {
             'property': property
         }
 
-        return render(request, 'booking/bookingview.html', context=context)
+        return render(request, 'booking/receivedview.html', context=context)
 
 
 class AddBookingView(View):
@@ -36,10 +44,14 @@ class AddBookingView(View):
 
         property = get_object_or_404(Property, slug= slug, available = True)
 
-        from_date = request.POST['from_date']
-        to_date = request.POST['to_date']
-        no_of_people = request.POST['no_of_people']
-        no_of_rooms = request.POST['no_of_rooms']
+        if property.owner == request.user:
+
+            return HttpResponse("<h1>You can't Book your own Property </h1>")
+
+        from_date = parser.parse(request.POST['from_date'])
+        to_date = parser.parse(request.POST['to_date'])
+        no_of_people = int(request.POST['no_of_people'])
+        no_of_rooms = int(request.POST['no_of_rooms'])
 
         data= {
             'property': property,
@@ -52,7 +64,7 @@ class AddBookingView(View):
 
         booking = Booking.objects.create(**data)
 
-        return redirect('homepage')
+        return redirect('booked-booking')
 
 class EditBookingView(View):
     def get(self, request,id):
@@ -63,14 +75,13 @@ class EditBookingView(View):
 
         booking = get_object_or_404(Booking, pk=id, visitor=request.user)
 
-        booking.from_date = request.POST['from_date']
-        booking.to_date = request.POST['to_date']
-        booking.no_people = request.POST['no_of_people']
-        booking.rooms = request.POST['no_of_rooms']
-
+        booking.from_date = parser.parse(request.POST['from_date'])
+        booking.to_date = parser.parse(request.POST['to_date'])
+        booking.no_people = int(request.POST['no_of_people'])
+        booking.rooms = int(request.POST['no_of_rooms'])
         booking.save()
 
-        return redirect('homepage')
+        return redirect('booked-booking')
 
         
 class DeleteBookingView(View):
@@ -80,7 +91,7 @@ class DeleteBookingView(View):
         booking = get_object_or_404(Booking, pk=id, visitor=request.user)
         booking.delete()
 
-        return redirect('homepage')
+        return redirect('booked-booking')
         
 
 

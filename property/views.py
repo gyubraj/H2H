@@ -62,7 +62,7 @@ class EditProperty(View):
     template_name = "property/editproperty.html"
 
     def get(self,request, slug):
-        property = get_object_or_404(Property, slug=slug, user= request.user)
+        property = get_object_or_404(Property, slug=slug, owner= request.user)
         images = PropertyImages.objects.filter(property = property)
         context = {
             'property': property,
@@ -72,7 +72,7 @@ class EditProperty(View):
 
     def post(self, request, slug):
 
-        property = get_object_or_404(Property, slug=slug, user= request.user)
+        property = get_object_or_404(Property, slug=slug, owner= request.user)
 
         property.name = request.POST['name']
         property.type = request.POST['type']
