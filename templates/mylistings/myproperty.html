@@ -54,6 +54,8 @@
                     </div>
                 </div>
             </div>
+
+            {% if property %}
             <div class="row destinations_row">
                 <div class="col">
                     <div class="destinations_container item_grid">
@@ -64,9 +66,19 @@
 
                         {% endfor %}
 
+
                     </div>
                 </div>
             </div>
+            {% else %}
+
+            <div class="container mt-5 text-center">
+
+                <h3>No Property is listed yet. <a href="{% url 'add-property' %}">ADD PROPERTY</a></h3>
+
+            </div>
+            
+            {% endif %}
         </div>
     </div>
 

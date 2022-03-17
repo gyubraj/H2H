@@ -17,6 +17,12 @@
     crossorigin="" />
 
 <link rel="stylesheet" type="text/css" href="{% static 'styles/property/addproperty.css' %}">
+<style>
+    .nav-link {
+        color: black;
+        text-decoration-style: double;
+    }
+</style>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
@@ -31,13 +37,10 @@
     <a class="navbar-brand" href="{% url 'homepage' %}" style="left: 20px;  padding-left: 20px;"><b><b>H2H</b></b></a>
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'homepage' %}" style="color: Black;, text-decoration-style: double;"><b>Home</b></a>
+            <a class="nav-link" href="{% url 'homepage' %}"><b>Home</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: black;, text-decoration-style:double;"><b>My Listings</b></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" style="color: black;, text-decoration-style:double;"><b>Profile</b></a>
+            <a class="nav-link" href="{% url 'my-property' %}"><b>My Listings</b></a>
         </li>
     </ul>
 </nav>

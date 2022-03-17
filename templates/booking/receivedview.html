@@ -45,6 +45,8 @@
 
     <div class="destinations" id="destinations" style="margin-top: 100px;">
 
+        {% if property %}
+
         {% for p in property %}
 
         {% if p.all_orders %}
@@ -85,9 +87,22 @@
 
         </div>
 
+        {% else %}
+
+        <div class="container text-center mt-5">
+            <h3>Looks like No order have been placed for your property,</h3>
+        </div>
+
         {% endif %}
 
         {% endfor %}
+
+        {% else %}
+        <div class="container text-center mt-5">
+            <h3>Looks like you have not listed your property.</h3>
+        </div>
+
+        {% endif %}
     </div>
 
 
