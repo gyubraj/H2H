@@ -86,6 +86,10 @@ class User(AbstractBaseUser):
     def get_property(self):
         return self.property_owner.all()
 
+    @property
+    def get_booked_booking(self):
+        return self.user_booking.all()
+
 
 @receiver(post_save, sender=User)
 def send_activation_email(sender, instance, created, **kwargs):

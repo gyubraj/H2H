@@ -52,9 +52,9 @@ class Property(models.Model):
     def all_orders(self):
         return self.booking.all()
 
-    @property
-    def get_booked_booking(self):
-        return self.user_booking.all()
+    # @property
+    # def get_booked_booking(self):
+    #     return self.user_booking.all()
 
     @staticmethod
     def get_search_data(type, location, no_of_people):
