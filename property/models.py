@@ -6,6 +6,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 from user.models import User
+from property.email import send_property_added_email
 
 # Create your models here.
 
@@ -99,5 +100,7 @@ def unique_slug_generator(instance, new_slug = None):
 
 @receiver(pre_save, sender=Property)
 def pre_save_receiver(sender, instance, *args, **kwargs):
+    if instance:
+        send_property_added_email(instance)
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)

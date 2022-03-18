@@ -6,6 +6,10 @@ from django.db.models import Sum
 from user.models import User
 from property.models import Property
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from booking.email import send_booking_cancel_email, send_booking_confirmed_email,send_booking_received_email
 # Create your models here.
 
 
@@ -49,3 +53,17 @@ class Booking(models.Model):
         
         super(Booking,self).save(*args,**kwargs)
 
+    def delete(self, *args, **kwargs):
+
+        send_booking_cancel_email(self)
+
+        super(Booking,self).delete(*args, **kwargs)
+
+
+
+@receiver(post_save, sender=Booking)
+def send_activation_email(sender, instance, created, **kwargs):
+
+    if created:
+        send_booking_received_email(instance)
+        send_booking_confirmed_email(instance)
