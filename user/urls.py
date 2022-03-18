@@ -1,7 +1,7 @@
 """"""
 
 from django.urls import path
-from user.views import RegisterView, LoginView, ResetPasswordRequestView, ResetPasswordView, ActivateAccount, LogoutUser
+from user.views import RegisterView, LoginView, ResetPasswordRequestView, ResetPasswordView, ActivateAccount, LogoutUser, ChangePasswordView
 
 urlpatterns = [
     path('login/',LoginView.as_view(),name='login'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('request-reset-password/', ResetPasswordRequestView.as_view(),name='request-reset-password'),
     path('reset-password/<str:uid>/<str:token>/',ResetPasswordView.as_view(),name="reset-password"),
     path('activate-account/<str:uid>/<str:token>/',ActivateAccount.as_view(),name='activate-account'),
-    path('logout',LogoutUser.as_view(), name="logout")
+    path('change-password',ChangePasswordView.as_view(),name="change-password"),
+    path('logout',LogoutUser.as_view(), name="logout"),
 ]
