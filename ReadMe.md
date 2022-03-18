@@ -7,7 +7,7 @@
 ```cmd
 python3 -m venv venv
 
-venv\Scripts\activate
+venv\Scripts\python
 
 pip install -r requirements.txt
 

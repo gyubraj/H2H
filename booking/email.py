@@ -12,7 +12,7 @@ def send_booking_confirmed_email(order):
     email_subject = "Booking in H2H"
 
     message = render_to_string(
-        "customer/orderpalced.html", {"order": order}
+        "customer/orderplaced.html", {"order": order}
     )
 
     email_message = EmailMessage(
@@ -45,6 +45,6 @@ def send_booking_received_email(order):
     )
 
     email_message = EmailMessage(
-        email_subject, message, settings.EMAIL_HOST_USER, [order.property.user.email]
+        email_subject, message, settings.EMAIL_HOST_USER, [order.property.owner.email]
     )
     EmailThread(email_message).start()
