@@ -1,0 +1,19 @@
+{% autoescape off %}
+
+Hi {{ order.visitor.name }},
+
+Your booking for the property {{ order.property.name }} from {{ order.from_date}} to {{ order.to_date }} has been
+placed successfully.
+
+More Deatils : 
+
+Number of rooms : {{order.rooms}}
+Number of People : {{order.no_people}}
+Price : {{ order.price}}
+
+Best Regards,
+
+H2H Team
+
+
+{% endautoescape %}

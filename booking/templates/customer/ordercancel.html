@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+Hi {{ order.visitor.name }},
+
+Your booking for the property {{ order.property.name }} from {{ order.from_date}} to {{ order.to_date }} has been cancelled successfully.
+
+Best Regards,
+
+H2H Team
+
+
+{% endautoescape %}
