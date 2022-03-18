@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from contact.models import Contact
 
 class ContactView(View):
 
     def get(self, request):
-        pass
+        return redirect('homepage')
 
     def post(self, request):
 

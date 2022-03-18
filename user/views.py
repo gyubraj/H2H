@@ -11,6 +11,7 @@ from django.utils.http import urlsafe_base64_decode
 
 from user.utils import activate_account, send_password_reset_email
 
+
 class RegisterView(View):
 
     template_name = "user/register.html"
@@ -25,7 +26,6 @@ class RegisterView(View):
         try:
             User.objects.create_user(email,name,password)
         except:
-            
             return HttpResponse("<h1>There seems to be an error</h1>")
         return redirect('login')
 
