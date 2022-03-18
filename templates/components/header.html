@@ -25,7 +25,7 @@
                                         <li>
                                             <a style="color: white;">{{ request.user.name | capfirst}}
                                                 <div class="dropdown-content">
-                                                    <a href="{% url 'received-booking' %}" class="bg-dark"> Change Password </a> <br>
+                                                    <a href="" class="bg-dark" data-toggle="modal" data-target="#exampleModalCenter"> Change Password </a> <br>
                                                     <a href="{% url 'logout' %}" class="bg-dark"> Logout </a>
                                                 </div>
                                             </a>
@@ -49,21 +49,6 @@
                                 {% endif %}
                             </ul>
                         </nav>
-                        <!-- <div class="dropdown">
-							<div class="header_phone ml-auto">
-								<button class="dropbtn">LOGIN</button>
-                				<div class="dropdown-content">
-                				<a href="guestlogin.html" class="login-content"> Guest </a> <br>
-                				<a href="hostlogin.html" class="login-content"> Host </a>
-                				</div>
-                
-
-
-
-							</div>
-							</div> -->
-
-                        <!-- Hamburger -->
 
                         <div class="hamburger ml-auto">
                             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -74,6 +59,8 @@
             </div>
         </div>
     </div>
+
+    
     <!-- <div class="header_social d-flex flex-row align-items-center justify-content-start">
         <ul class="d-flex flex-row align-items-start justify-content-start">
             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -82,3 +69,33 @@
         </ul>
     </div> -->
 </header>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'change-password' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="password1" name="password1" placeholder="New Password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password">
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary float-right">Change</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

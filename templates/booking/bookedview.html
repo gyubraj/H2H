@@ -104,23 +104,23 @@
                                                                     <label for="from_date">Arrival Date</label>
                                                                     <input type="text" class="form-control" id="from_date" name="from_date"
                                                                     onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                                    placeholder="Arrival Date" value="{{p.from_date}}">
+                                                                    placeholder="Arrival Date" value="{{p.from_date}}" required>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="to_date">Checkout Date</label>
                                                                     <input type="text" class="form-control" id="to_date" name="to_date"
                                                                     onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                                    placeholder="Checkout Date" value="{{p.to_date}}">
+                                                                    placeholder="Checkout Date" value="{{p.to_date}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                     <label for="rooms">Number of Rooms</label>
-                                                                    <input type="number" class="form-control" id="rooms" name="no_of_rooms" value="{{p.rooms}}" placeholder="Enter number of rooms">
+                                                                    <input type="number" class="form-control" id="rooms" name="no_of_rooms" value="{{p.rooms}}" placeholder="Enter number of rooms" required>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="people">Number of People</label>
-                                                                    <input type="number" class="form-control" id="people" name="no_of_people" value="{{p.no_people}}" placeholder="Enter number of guests">
+                                                                    <input type="number" class="form-control" id="people" name="no_of_people" value="{{p.no_people}}" placeholder="Enter number of guests" required>
                                                                 </div>
                                                             </div>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

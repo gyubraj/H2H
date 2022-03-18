@@ -57,7 +57,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Booking</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Booking {{property.name}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -70,12 +70,14 @@
                                 <label for="from_date">Arrival Date</label>
                                 <input type="text" class="form-control" id="from_date" name="from_date"
                                     onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Arrival Date"
+                                    required
                                     >
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="to_date">Checkout Date</label>
                                 <input type="text" class="form-control" id="to_date" name="to_date"
                                     onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Checkout Date"
+                                    required
                                     >
                             </div>
                         </div>
@@ -83,17 +85,16 @@
                             <div class="form-group col-md-6">
                                 <label for="rooms">Number of Rooms</label>
                                 <input type="number" class="form-control" id="rooms" name="no_of_rooms"
-                                    placeholder="Enter number of rooms">
+                                    placeholder="Enter number of rooms" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="people">Number of People</label>
                                 <input type="number" class="form-control" id="people" name="no_of_people"
-                                placeholder="Enter number of guests">
+                                placeholder="Enter number of guests" required>
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary float-right">Save
-                            Change</button>
+                        <button type="submit" class="btn btn-primary float-right">Book</button>
                     </form>
                 </div>
             </div>
