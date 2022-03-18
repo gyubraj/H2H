@@ -121,3 +121,29 @@ class LogoutUser(View):
 
         return redirect('login')
 
+
+
+class ChangePasswordView(View):
+
+    def get(self,request):
+
+        return redirect('homepage')
+
+    def post(self,request):
+
+        password1 = request.POST['password1']
+
+        password2 = request.POST['password2']
+
+        if password1 != password2:
+
+            return "Error"
+
+        user = request.user
+
+        user.set_password(password1)
+
+        user.save()
+
+        return redirect('homepage')
+

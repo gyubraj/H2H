@@ -42,6 +42,9 @@ class AddBookingView(View):
 
     def post(self, request, slug):
 
+
+        print("Hello World")
+
         property = get_object_or_404(Property, slug= slug, available = True)
 
         if property.owner == request.user:
