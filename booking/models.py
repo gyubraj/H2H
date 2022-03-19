@@ -22,6 +22,7 @@ class Booking(models.Model):
     from_date = models.DateField()
     to_date = models.DateField()
     price = models.FloatField(null= True,blank=True)
+    checkout = models.BooleanField(default=False)
 
     order_date = models.DateTimeField(auto_now=True)
 

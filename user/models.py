@@ -88,7 +88,7 @@ class User(AbstractBaseUser):
 
     @property
     def get_booked_booking(self):
-        return self.user_booking.all()
+        return self.user_booking.filter(checkout=False)
 
 
 @receiver(post_save, sender=User)
