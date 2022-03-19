@@ -28,7 +28,7 @@ class SearchView(View):
             'type': type
         }
 
-        return render(request, 'search/search.html', context=context)
+        return render(request, 'search/searchs.html', context=context)
 
 
 
