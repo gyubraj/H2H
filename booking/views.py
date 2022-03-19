@@ -42,9 +42,6 @@ class AddBookingView(View):
 
     def post(self, request, slug):
 
-
-        print("Hello World")
-
         property = get_object_or_404(Property, slug= slug, available = True)
 
         if property.owner == request.user:
@@ -98,6 +95,20 @@ class DeleteBookingView(View):
         booking.delete()
 
         return redirect('booked-booking')
+
+
+class CheckoutBookView(View):
+
+    def get(self, request, id):
+
+        booking = get_object_or_404(Booking,property__owner= request.user, pk=id, checkout=False)
+
+        booking.checkout= True
+
+        booking.save()
+
+        return redirect('received-booking')
+
         
 
 

@@ -9,7 +9,7 @@ class ContactView(View):
 
     def post(self, request):
 
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             email = request.user.email
             name = request.user.name
         else:
@@ -21,4 +21,4 @@ class ContactView(View):
 
         Contact.objects.create(email= email, name= name, subject= subject, query= message)
 
-        return "Thank you! we will reach too you as soon as possible."
+        return redirect('homepage')
