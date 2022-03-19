@@ -70,6 +70,7 @@
                         <th scope="col">No Of People</th>
                         <th scope="col">No of Rooms</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Checkout User?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +82,7 @@
                                 <td>{{b.no_people}}</td>
                                 <td>{{b.rooms}}</td>
                                 <td>{{b.price}}</td>
+                                <td><a href="{% url 'checkout' b.pk %}" class="btn btn-primary btn-sm">Checkout</a></td>
                             </tr>
                     {% endfor %}
                     
@@ -89,13 +91,8 @@
 
         </div>
 
-        {% else %}
+        {% endif  %}
 
-        <div class="container text-center mt-5">
-            <h3>Looks like No order have been placed for your property,</h3>
-        </div>
-
-        {% endif %}
 
         {% endfor %}
 

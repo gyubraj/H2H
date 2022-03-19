@@ -1,0 +1,154 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>H2H : Property Search</title>
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'styles/base/responsive.css' %}"> -->
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base/main_styles.css' %}">
+
+<link href="{% static 'styles/property/base/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/font-awesome.min.css' %}" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
+<link href="{% static 'styles/property/base/owl.carousel.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/owl.theme.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/owl.transitions.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/cs-select.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/bootstrap-datepicker3.min.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/freepik.hotels.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/nivo-lightbox.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/nivo-lightbox-theme.css' %}" rel="stylesheet">
+<link href="{% static 'styles/property/base/style.css' %}" rel="stylesheet">
+
+<script src="{% static 'styles/property/base/modernizr.custom.min.js' %}"></script>
+
+
+<style>
+    .header_content {
+        height: 100px;
+    }
+
+    .header {
+        background: rgba(24, 24, 24, 0.6);
+    }
+
+    .no-facility {
+        text-decoration: line-through;
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+
+<div class="super_container" style="margin-bottom: 60px;">
+
+
+    {% include 'components/header.html' %}
+
+</div>
+
+<div class="mg-page mg-available-rooms" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for p in property %}
+                <div class="mg-avl-room">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <a href="{% url 'property-detail' p.slug %}"><img src="{{p.main_image.url}}" alt=""
+                                    class="img-responsive"></a>
+                        </div>
+                        <div class="col-sm-7">
+                            <h3 class="mg-avl-room-title"><a href="{% url 'property-detail' p.slug %}">{{p.name}}</a>
+                                <span>Rs.{{p.price_per_room}}/Night</span>
+                            </h3>
+                            <span><b>City : </b>{{p.city}}</span> <span class="float-right"><b>Address :
+                                </b>{{p.address}}</span><br><br>
+                            <div class="row mg-room-fecilities">
+                                <div class="col-sm-6">
+                                    <ul>
+                                        <li class="{% if not p.complementary_breakfast %} no-facility {% endif %}"><i
+                                                class="fas fa-hamburger"></i>Breakfast</li>
+                                        <li class="{% if not p.ac %} no-facility {% endif %}"><i
+                                                class="fa fa-sun-o"></i> Air conditioning</li>
+                                        <li class="{% if not p.luxirous_room %} no-facility {% endif %}"><i
+                                                class="fas fa-house-user"></i>
+                                            Luxirous Room</li>
+                                        <li class="{% if not p.attached_bathroom %} no-facility {% endif %}"><i
+                                                class="fas fa-bath"></i> Attach
+                                            Bathroom</li>
+                                        <li class="{% if not p.hot_shower %} no-facility {% endif %}"><i
+                                                class="fas fa-shower"></i> Hot Shower
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul>
+                                        <li class="{% if not p.tv %} no-facility {% endif %}"><i class="fas fa-tv"></i>
+                                            TV</li>
+                                        <li class="{% if not p.smoking_drinking %} no-facility {% endif %}"><i
+                                                class="fas fa-smoking"></i>
+                                            Smoking Drinking</li>
+                                        <li class="{% if not p.internet %} no-facility {% endif %}"><i
+                                                class="fas fa-wifi"></i> Wi-fi service
+                                        </li>
+                                        <li class="{% if not p.receive_facility %} no-facility {% endif %}"><i
+                                                class="fas fa-car"></i> Receive
+                                            Facility</li>
+                                        <li class="{% if not p.drop_facility %} no-facility {% endif %}"><i
+                                                class="fas fa-car-side"></i> Drop
+                                            Facility</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <a href="{% url 'property-detail' p.slug %}" class="btn btn-main pull-right">More
+                                Details</a>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% block js %}
+
+<script src="{% static 'styles/property/base/jquery.min.js' %}"></script>
+<script src="{% static 'styles/property/base/bootstrap.min.js' %}"></script>
+<script src="{% static 'styles/property/base/owl.carousel.min.js' %}"></script>
+<script src="{% static 'styles/property/base/jssor.slider.mini.js' %}"></script>
+<script src="{% static 'styles/property/base/classie.js' %}"></script>
+<script src="{% static 'styles/property/base/selectFx.js' %}"></script>
+<script src="{% static 'styles/property/base/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'styles/property/base/starrr.min.js' %}"></script>
+<script src="{% static 'styles/property/base/nivo-lightbox.min.js' %}"></script>
+<script src="{% static 'styles/property/base/jquery.shuffle.min.js' %}"></script>
+<script src="{% static 'styles/property/base/js' %}"></script>
+<script src="{% static 'styles/property/base/gmaps.min.js' %}"></script>
+<script src="{% static 'styles/property/base/jquery.parallax-1.1.3.js' %}"></script>
+<script src="{% static 'styles/property/base/script.js' %}"></script>
+
+
+{% endblock js %}
+
