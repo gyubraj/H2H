@@ -25,5 +25,6 @@ urlpatterns = [
     path('property/',include('property.urls')),
     path('search/',include('search.urls')),
     path('booking/',include('booking.urls')),
+    path('contact/',include('contact.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
