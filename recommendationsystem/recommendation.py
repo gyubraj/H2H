@@ -27,19 +27,20 @@ def initRecommend(recommendFor):
     df['finalExtractedMeasureWord'] = df.finalExtractedMeasureWord.apply(func=removePunctuations)
     df['finalExtractedMeasureWord'] = df.finalExtractedMeasureWord.apply(func=removeHtml)
 
-    df['finalExtractedMeasureWord']
-
 
     df.reset_index(level = 0, inplace = True) 
     indices = pd.Series(df.index, index = df['name'])
 
-    # here for bookify, recommendation will be done as accoridng to description (ie description convert to vector(i use tfidf))
+    print(indices)
+
+    # here for H2H, recommendation will be done as accoridng to different fields (ie fields convert to vector(i use tfidf))
     tf = TfidfVectorizer(analyzer='word', ngram_range=(2, 2), min_df = 1, stop_words='english')
     tfidf_matrix = tf.fit_transform(df['finalExtractedMeasureWord'])
 
     simi = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
     index = indices[recommendFor]
+
     extractedSim = list(enumerate(simi[index])) #pairwsie similarity scores 
 
     extractedSim = sorted(extractedSim, key=lambda x: x[1], reverse=True) #sorting result 
