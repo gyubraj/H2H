@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-
+from django.contrib import messages
 from user.utils import activate_account, send_password_reset_email
 
 
@@ -26,6 +26,7 @@ class RegisterView(View):
         try:
             User.objects.create_user(email,name,password)
         except:
+            messages.add_message(request, message="Looks like this email is already registered.",level=messages.ERROR)
             return HttpResponse("<h1>There seems to be an error</h1>")
         return redirect('login')
 
@@ -45,6 +46,8 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             return redirect('homepage')
+        
+        messages.add_message(request, message="Enter valid email and Password.",level=messages.ERROR)
 
         return redirect('login')
 
@@ -66,7 +69,7 @@ class ResetPasswordRequestView(View):
             user = User.objects.get(email__iexact = email)
             send_password_reset_email(user)
         except:
-            pass
+            messages.add_message(request, message="Something went wrong.",level=messages.ERROR)
 
         return redirect('login')
 
