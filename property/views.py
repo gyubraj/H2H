@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
-from property.models import Property, PropertyImages
+from property.models import Property, PropertyImages, PropertyReview
 from user.models import User
+from django.db.models import Q
 
 
 # Create your views here.
@@ -16,7 +17,7 @@ class PropertyDetailView(View):
             'property':property
         }
 
-        return render(request,'property/property_detail.html',context)
+        return render(request,'property/property_details.html',context)
 
 
 class AddPropertyView(View):
@@ -114,7 +115,6 @@ class DeletePropertyView(View):
         return render(request,"property/deletesuccess.html")
 
 
-# TODO
 class ChangePropertyAvailable(View):
 
     def get(self, request, slug):
@@ -138,3 +138,28 @@ class MyProperty(View):
 
         return render(request, "mylistings/myproperty.html",context=context)
 
+
+class PropertyReviewView(View):
+
+    def get(self,request,slug):
+
+        return redirect('property-detail',slug)
+
+    def post(self, request, slug):
+
+        property = get_object_or_404(Property,~Q(owner=request.user),slug=slug)
+
+        comment = request.POST['comment']
+
+        data = {
+            'property':property,
+            'user': request.user
+        }
+
+        obj, created = PropertyReview.objects.get_or_create(**data)
+
+        obj.comment = comment
+
+        obj.save()
+
+        return redirect('property-detail',slug)

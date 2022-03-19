@@ -51,7 +51,16 @@ class Property(models.Model):
 
     @property
     def all_orders(self):
-        return self.booking.all()
+        return self.booking.filter(checkout=False)
+
+    @property
+    def get_rules(self):
+
+        return self.rules.split('\n')
+
+    @property
+    def get_review(self):
+        return self.review.all()
 
     # @property
     # def get_booked_booking(self):
@@ -59,12 +68,6 @@ class Property(models.Model):
 
     @staticmethod
     def get_search_data(type, location, no_of_people):
-
-        # data = 
-
-        # already_order_room = self.property.all_orders.filter(from_date__gte=self.from_date,to_date__lte=self.to_date).aggregate(od_room=Sum('order_rooms'))['od_room']
-        # if already_order_room>0 and (total_rooms-already_order_room)< order_rooms:
-        #     return "Not Available"
 
         return Property.objects.filter(Q(city__icontains = location) | Q(address__icontains=location), available= True, type__iexact= type)
 
@@ -75,6 +78,17 @@ class Property(models.Model):
 class PropertyImages(models.Model):
     property = models.ForeignKey(Property,on_delete=models.CASCADE,related_name="images")
     image = models.ImageField(upload_to = 'property/other_images')
+
+
+
+class PropertyReview(models.Model):
+
+    property = models.ForeignKey(Property, on_delete=models.CASCADE,related_name="review")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    comment = models.TextField()
+
+    update_date = models.DateField(auto_now=True)
 
 
 def random_string_generator(size = 10, chars = string.ascii_lowercase + string.digits):
