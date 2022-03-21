@@ -10,6 +10,8 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.contrib import messages
 from user.utils import activate_account, send_password_reset_email
+from django.utils.decorators import method_decorator
+
 
 
 class RegisterView(View):
@@ -118,6 +120,7 @@ class ActivateAccount(View):
 
 class LogoutUser(View):
 
+    @method_decorator(login_required)
     def get(self, request):
 
         logout(request)
@@ -128,10 +131,12 @@ class LogoutUser(View):
 
 class ChangePasswordView(View):
 
+    @method_decorator(login_required)
     def get(self,request):
 
         return redirect('homepage')
 
+    @method_decorator(login_required)
     def post(self,request):
 
         password1 = request.POST['password1']
@@ -140,7 +145,7 @@ class ChangePasswordView(View):
 
         if password1 != password2:
 
-            return "Error"
+            return HttpResponse("Error! Please Enter Same Password")
 
         user = request.user
 
