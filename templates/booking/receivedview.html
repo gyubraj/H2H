@@ -76,13 +76,73 @@
                 <tbody>
                     {% for b in p.all_orders %}
                             <tr>
-                                <th scope="row">{{b.visitor.name}}</th>
+                                <th scope="row"><a href="" data-toggle="modal" data-target="#userDetailModal">{{b.visitor.name}}</a></th>
                                 <td>{{b.from_date}}</td>
                                 <td>{{b.to_date}}</td>
                                 <td>{{b.no_people}}</td>
                                 <td>{{b.rooms}}</td>
                                 <td>{{b.price}}</td>
-                                <td><a href="{% url 'checkout' b.pk %}" class="btn btn-primary btn-sm">Checkout</a></td>
+                                <td><a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#checkoutModal">Checkout</a></td>
+
+                                <!-- User Detail Modal -->
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="userDetailModal" tabindex="-1" role="dialog" aria-labelledby="userDetailModalTitle"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">{{b.visitor.name}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group row">
+                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{b.visitor.email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- End User Detail Modal -->
+
+
+
+                                <!-- Checkout modal -->
+                                <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="checkoutModalLabel">Checkout User?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure to checkout the Booking of {{b.visitor.name}}?<br><br>
+
+                                                Please make sure before confirm as this will remove the booking from {{b.visitor.name}} side too.
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <a type="button" class="btn btn-primary text-white" href="{% url 'checkout' b.pk %}">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- End Checkout Modal -->
                             </tr>
                     {% endfor %}
                     
