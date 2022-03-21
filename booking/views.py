@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from django.views import View
 from booking.models import Booking
@@ -12,6 +14,7 @@ from dateutil import parser
 
 class BookedBookingView(View):
 
+    @method_decorator(login_required)
     def get(self,request):
 
         bookedproperty = request.user.get_booked_booking
@@ -23,7 +26,7 @@ class BookedBookingView(View):
 
 
 class ReceivedBookingView(View):
-
+    @method_decorator(login_required)
     def get(self, request):
         property = request.user.get_property
 
@@ -36,10 +39,12 @@ class ReceivedBookingView(View):
 
 class AddBookingView(View):
 
+    @method_decorator(login_required)
     def get(self, request, slug):
 
         return redirect('homepage')
 
+    @method_decorator(login_required)
     def post(self, request, slug):
 
         property = get_object_or_404(Property, slug= slug, available = True)
@@ -53,7 +58,7 @@ class AddBookingView(View):
         no_of_people = int(request.POST['no_of_people'])
         no_of_rooms = int(request.POST['no_of_rooms'])
 
-        if Booking.objects.filter(from_date__gte=from_date, to_date__lte = to_date, property=property, visitor= request.user).exists():
+        if Booking.objects.filter(from_date__gte=from_date, to_date__lte = to_date, property=property, visitor= request.user, checkout=False).exists():
             return HttpResponse("You Already have booked this property.")
 
         data= {
@@ -70,10 +75,13 @@ class AddBookingView(View):
         return redirect('booked-booking')
 
 class EditBookingView(View):
+
+    @method_decorator(login_required)
     def get(self, request,id):
 
         return redirect('homepage')
 
+    @method_decorator(login_required)
     def post(self, request, id):
 
         booking = get_object_or_404(Booking, pk=id, visitor=request.user)
@@ -89,6 +97,7 @@ class EditBookingView(View):
         
 class DeleteBookingView(View):
 
+    @method_decorator(login_required)
     def get(self, request, id):
 
         booking = get_object_or_404(Booking, pk=id, visitor=request.user)
@@ -99,6 +108,7 @@ class DeleteBookingView(View):
 
 class CheckoutBookView(View):
 
+    @method_decorator(login_required)
     def get(self, request, id):
 
         booking = get_object_or_404(Booking,property__owner= request.user, pk=id, checkout=False)
