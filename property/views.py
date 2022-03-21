@@ -3,6 +3,8 @@ from django.views import View
 from property.models import Property, PropertyImages, PropertyReview
 from user.models import User
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 # Create your views here.
@@ -24,9 +26,11 @@ class AddPropertyView(View):
 
     template_name = "property/addproperty.html"
 
+    @method_decorator(login_required)
     def get(self, request):
         return render(request, self.template_name)
 
+    @method_decorator(login_required)
     def post(self, request):
         data={
             'owner': request.user,
@@ -62,6 +66,7 @@ class AddPropertyView(View):
 class EditProperty(View):
     template_name = "property/editproperty.html"
 
+    @method_decorator(login_required)
     def get(self,request, slug):
         property = get_object_or_404(Property, slug=slug, owner= request.user)
         images = PropertyImages.objects.filter(property = property)
@@ -71,6 +76,7 @@ class EditProperty(View):
         }
         return render(request, self.template_name,context= context)
 
+    @method_decorator(login_required)
     def post(self, request, slug):
 
         property = get_object_or_404(Property, slug=slug, owner= request.user)
@@ -105,6 +111,7 @@ class EditProperty(View):
 
 class DeletePropertyView(View):
 
+    @method_decorator(login_required)
     def get(self, request, slug):
         property = get_object_or_404(Property, slug= slug, owner= request.user)
 
@@ -116,7 +123,8 @@ class DeletePropertyView(View):
 
 
 class ChangePropertyAvailable(View):
-
+    
+    @method_decorator(login_required)
     def get(self, request, slug):
 
         property = get_object_or_404(Property, owner = request.user, slug= slug)
@@ -128,6 +136,7 @@ class ChangePropertyAvailable(View):
 
 class MyProperty(View):
 
+    @method_decorator(login_required)
     def get(self, request):
 
         property = Property.objects.filter(owner=request.user)
@@ -145,6 +154,7 @@ class PropertyReviewView(View):
 
         return redirect('property-detail',slug)
 
+    @method_decorator(login_required)
     def post(self, request, slug):
 
         property = get_object_or_404(Property,~Q(owner=request.user),slug=slug)
