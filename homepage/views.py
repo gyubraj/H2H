@@ -10,7 +10,10 @@ class HomePage(View):
 
     def get(self,request):
 
-        property = Property.objects.all()
+        if request.user.is_authenticated:
+            property = Property.objects.exclude(owner=request.user)
+        else:
+            property = Property.objects.all()
 
         recommendedPlace = None
 
